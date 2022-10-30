@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  
+<meta http-equiv="refresh" content="6">
+  <style>
+  h1{
+    font-family: Sofia;
+    color: blue;
+    margin-top: 40%;
+  }
+  body{
+    
+    background: violet;
+  }
+    #setup {
+      background: darkcyan;
+      border-radius: 20px;
+      border: 1px solid darkblue;
+      margin-top: 20%;
+      font-size: 20px;
+      padding: 6px;
+      font-family:Rubik;
+      text-align: center;
+    }
+
+    #punchline {
+      font-family: Quicksand;
+      border-radius: 20px;
+      background: lightcyan;
+      margin-top: 20px;
+      padding: 4px;
+      font-size: 19px;
+      text-align: center;
+    }
+    
+  </style>
+
+
+  <title> Jokes are Funny
+  </title>    <link
+      href="https://fonts.googleapis.com/css?family=Rubik|Quicksand|Sofia"
+      rel="stylesheet"
+    /> 
+</head>
+
+<body>
+<center><h1> Funny  Jokes </h1></center>
+  <div id="setup">Loading...
+  </div>
+  <div id="punchline">
+loading...
+  </div>
+
+
+  <script>
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+
+        var myObj = JSON.parse(this.responseText);
+        var r = Math.floor(Math.random() * 385 + 1);
+        document.getElementById("setup").innerHTML = myObj[r].setup;
+        document.getElementById("punchline").innerHTML = myObj[r].punchline;
+        console.log(r);
+      }
+    };
+    xmlhttp.open("GET", "https://api.sampleapis.com/jokes/goodJokes", true);
+    xmlhttp.send();
+  </script>
+</body>
+
+</html>
